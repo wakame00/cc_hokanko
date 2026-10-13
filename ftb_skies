@@ -14,14 +14,12 @@ while true do
     if has_block then
         if data.name == TARGET_ORE then
             print("win")
-            break
+            turtle.dig() 
             
         elseif not IGNORE_BLOCKS[data.name] then
             turtle.dig()
         end
-
     end
     
-    -- タートルの過負荷を防ぐため一瞬待機
     sleep(0.05)
 end
