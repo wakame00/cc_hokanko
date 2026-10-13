@@ -1,0 +1,27 @@
+local TARGET_ORE = "ftbmaterials:dimensional_shard_stone_ore"
+
+local IGNORE_BLOCKS = {
+    ["minecraft:stone"] = true,        
+    ["minecraft:cobblestone"] = true,  
+    ["minecraft:deepslate"] = true,    
+    ["minecraft:cobbled_deepslate"] = true, 
+    ["minecraft:air"] = true,         
+}
+
+while true do
+    local has_block, data = turtle.inspect()
+    
+    if has_block then
+        if data.name == TARGET_ORE then
+            print("win")
+            break
+            
+        elseif not IGNORE_BLOCKS[data.name] then
+            turtle.dig()
+        end
+
+    end
+    
+    -- タートルの過負荷を防ぐため一瞬待機
+    sleep(0.05)
+end
